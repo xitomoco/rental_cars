@@ -1,0 +1,8 @@
+<% if @manufacturers.size <= 0 %>
+  <h1>Nenhum fabricante cadastrado</h1>
+<% end %>
+
+<% @manufacturers.each do |fab| %>
+  <h2><%= link_to fab.name, fab %></h2>
+<% end %>
+<p><%= link_to 'Voltar', root_path %></p>
