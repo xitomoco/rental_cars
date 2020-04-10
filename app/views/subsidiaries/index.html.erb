@@ -1,0 +1,9 @@
+<% if @subsidiaries[0] == nil %>
+  <h1>Nenhuma filial cadastrada</h1>
+<% end %>
+
+<% @subsidiaries.each do |s| %>
+  <h2><%= link_to s.name, subsidiary_path(s) %></h2>
+<% end %>
+
+<%= link_to 'Voltar', root_path %>
