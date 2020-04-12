@@ -1,0 +1,12 @@
+<% if @carcategories[0] == nil %>
+  <h2>Nenhuma categoria cadastrada</h2>
+<% end %>
+
+<% @carcategories.each do |category| %>
+  <%= category.name %>
+  <%= category.daily_rate %>
+  <%= category.car_insurance %>
+  <%= category.third_party_insurance %>
+<% end %>
+
+<%= link_to 'Voltar', root_path %>
