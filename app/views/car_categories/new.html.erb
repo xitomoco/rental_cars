@@ -1,0 +1,17 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+<%= form_for @carcategory do |f| %>
+  <%= f.label :name, 'Nome' %>
+  <%= f.text_field :name %>
+  <%= f.label :daily_rate, 'Taxa diaria' %>
+  <%= f.number_field :daily_rate %>
+  <%= f.label :car_insurance, 'Seguro do automóvel' %>
+  <%= f.number_field :car_insurance %>
+  <%= f.label :third_party_insurance, 'Seguro de terceiros' %>
+  <%= f.number_field :third_party_insurance %>
+  <%= f.submit 'Enviar' %>
+<% end %>
