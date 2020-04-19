@@ -2,6 +2,8 @@
   <h2>Nenhuma categoria cadastrada</h2>
 <% end %>
 
+<%= link_to 'Cadastrar categoria', new_car_category_path %>
+
 <% @carcategories.each do |category| %>
   <%= category.name %>
   <%= category.daily_rate %>

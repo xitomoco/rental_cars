@@ -1,8 +1,16 @@
 require 'rails_helper'
 
 feature 'User register customer' do
+  scenario 'from index page' do
+    visit root_path
+    click_on 'Clientes'
+
+    expect(page).to have_link('Cadastrar cliente', href: new_customer_path)
+  end
+
   scenario 'successfuly' do
     visit root_path
+    click_on 'Clientes'
     click_on 'Cadastrar cliente'
 
     fill_in 'Nome', with: 'Nome do cliente'
@@ -15,8 +23,17 @@ feature 'User register customer' do
     expect(page).to have_content('Email do cliente')
   end
 
+  scenario 'and check return link' do
+    visit root_path
+    click_on 'Clientes'
+    click_on 'Cadastrar cliente'
+
+    expect(page).to have_link('Voltar', href: customers_path)
+  end
+
   scenario 'and check all fields are fill' do 
     visit root_path
+    click_on 'Clientes'
     click_on 'Cadastrar cliente'
 
     fill_in 'Nome', with: ''

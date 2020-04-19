@@ -11,7 +11,7 @@ class CarCategoriesController < ApplicationController
   def create
     @carcategory = CarCategory.new(params_car_category)
     if @carcategory.save
-      redirect_to car_category_path(@carcategory)
+      redirect_to @carcategory
     else
       flash_spaces
       render :new

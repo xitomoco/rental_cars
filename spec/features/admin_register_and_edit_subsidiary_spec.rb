@@ -1,8 +1,16 @@
 require 'rails_helper'
 
 feature 'Admin register subsidiary' do
+  scenario 'from index page' do
+    visit root_path
+    click_on 'Filiais'
+
+    expect(page).to have_link('Cadastrar filial', href: new_subsidiary_path)
+  end
+
   scenario 'successfuly' do
     visit root_path
+    click_on 'Filiais'
     click_on 'Cadastrar filial'
 
     fill_in 'Nome', with: 'Nome da filial'
@@ -17,6 +25,7 @@ feature 'Admin register subsidiary' do
 
   scenario 'and check all create fields are fill' do
     visit root_path
+    click_on 'Filiais'
     click_on 'Cadastrar filial'
 
     fill_in 'Nome', with: ''
@@ -27,13 +36,32 @@ feature 'Admin register subsidiary' do
     expect(page).to have_content('Você deve informar todos os dados da filial')
   end
 
+  scenario 'and check return link in page_new' do
+    visit root_path
+    click_on 'Filiais'
+    click_on 'Cadastrar filial'
+
+    expect(page).to have_link('Voltar', href: subsidiaries_path)
+  end
+
+  scenario 'from show page' do
+    Subsidiary.create(name: 'Nome da filial 1', cnpj: 'CNPJ da filial 1', 
+                      address: 'Endereço da filial 1')
+
+    visit root_path
+    click_on 'Filiais'
+    click_on 'Nome da filial 1'
+
+    expect(page).to have_link('Editar')
+  end
+
   scenario 'and update subsidiary' do
     Subsidiary.create(name: 'Nome da filial 1', cnpj: 'CNPJ da filial 1', 
                       address: 'Endereço da filial 1')
 
     visit root_path
     click_on 'Filiais'
-    click_on 'Nome da filial'
+    click_on 'Nome da filial 1'
     click_on 'Editar'
 
     fill_in 'Nome', with: 'Nome da filial 2'
@@ -52,7 +80,7 @@ feature 'Admin register subsidiary' do
 
     visit root_path
     click_on 'Filiais'
-    click_on 'Nome da filial'
+    click_on 'Nome da filial 1'
     click_on 'Editar'
 
     fill_in 'Nome', with: ''
@@ -61,5 +89,17 @@ feature 'Admin register subsidiary' do
     click_on 'Enviar'
 
     expect(page).to have_content('Você deve informar todos os dados da filial')
+  end
+
+  scenario 'and check return link in page_edit' do
+    Subsidiary.create(name: 'Nome da filial 1', cnpj: 'CNPJ da filial 1', 
+                      address: 'Endereço da filial 1')
+
+    visit root_path
+    click_on 'Filiais'
+    click_on 'Nome da filial 1'
+    click_on 'Editar'
+
+    expect(page).to have_link('Voltar', href: subsidiaries_path)
   end
 end

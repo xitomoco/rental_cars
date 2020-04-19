@@ -21,5 +21,5 @@ class ManufacturersController < ApplicationController
 
   def params_manufacturer
     params.require(:manufacturer).permit(:name)
-  end
+  end 
 end

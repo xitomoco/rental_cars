@@ -21,24 +21,6 @@ class CustomersController < ApplicationController
       render 'new'
     end
   end
-  
-  def edit
-    @customer = Customer.find(params[:id])
-  end
-
-  def update
-    @customer = Object.find(params[:id])
-    if @customer.update_attributes(params_customer)
-      redirect_to @customer
-    else
-      flash_spaces
-      render 'edit'
-    end
-  end
-
-  def destroy
-    customer = Customer.find(params[:id])
-  end
 
   private
 

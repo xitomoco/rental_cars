@@ -15,7 +15,7 @@ class SubsidiariesController < ApplicationController
   def create
     @subsidiary = Subsidiary.create(params_subsidiary)
     if @subsidiary.save
-      redirect_to subsidiary_path(@subsidiary)
+      redirect_to @subsidiary
     else
       flash_spaces
       render :new
@@ -29,7 +29,7 @@ class SubsidiariesController < ApplicationController
   def update
     @subsidiary = Subsidiary.find(params[:id])
     if @subsidiary.update(params_subsidiary)
-      redirect_to subsidiary_path(@subsidiary)
+      redirect_to @subsidiary
     else
       flash_spaces
       render :edit

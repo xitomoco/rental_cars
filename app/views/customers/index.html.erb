@@ -1,0 +1,6 @@
+<% @customers.each do |customer| %>
+	<h2><%= customer.name %></h2>
+<% end %>
+
+<%= link_to 'Cadastrar cliente', new_customer_path %>
+<%= link_to 'Voltar', root_path %>
