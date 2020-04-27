@@ -1,3 +1,5 @@
+<h1>Categorias de carrors</h1>
+
 <% if @carcategories.empty? %>
   <h2>Nenhuma categoria cadastrada</h2>
 <% end %>
@@ -5,10 +7,17 @@
 <%= link_to 'Cadastrar categoria', new_car_category_path %>
 
 <% @carcategories.each do |category| %>
-  <%= link_to category.name, car_category_path(category) %>
-  <%= category.daily_rate %>
-  <%= category.car_insurance %>
-  <%= category.third_party_insurance %>
+  <div>
+  <h1>Categoria <%= category.name %></h1>
+    <dl>
+      <dt>Diaria</dt>
+      <dd><%= number_to_currency(category.daily_rate, delimiter: ',') %></dd>
+      <dt>Seguro do carro</dt>
+      <dd><%= number_to_currency(category.car_insurance, delimiter: ',') %></dd>
+      <dt>Seguro de terceiros</dt>
+      <dd><%= number_to_currency(category.third_party_insurance, delimiter: ',') %></dd>
+    </dl>
+  </div>
 <% end %>
 
 <%= link_to 'Voltar', root_path %>

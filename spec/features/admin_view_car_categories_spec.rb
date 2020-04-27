@@ -2,15 +2,16 @@ require 'rails_helper'
 
 feature 'Admin view categories' do
   scenario 'successfuly' do
-    CarCategory.create(name: 'Nome da categoria', daily_rate: '99.99', 
-                      car_insurance: '99.99', third_party_insurance: '99.99')
+    CarCategory.create(name: 'Hatch médio', daily_rate: '20', 
+                      car_insurance: '2189', third_party_insurance: '1800')
 
     visit root_path
     click_on 'Categorias'
 
-    expect(page).to have_content('Nome da categoria')
-    expect(page).to have_content('99.99')
-    expect(page).to have_content('99.99')
+    expect(page).to have_content('Categoria Hatch médio')
+    expect(page).to have_content('Diaria R$ 20,00')
+    expect(page).to have_content('Seguro do carro R$ 2,189,00')
+    expect(page).to have_content('Seguro de terceiros R$ 1,800,00')
     expect(page).not_to have_content('Nenhuma categoria cadastrada')
   end
 
@@ -22,8 +23,8 @@ feature 'Admin view categories' do
   end
 
   scenario 'and from index return to root' do
-    CarCategory.create(name: 'Nome da categoria', daily_rate: '99.99', 
-                      car_insurance: '99.99', third_party_insurance: '99.99')
+    CarCategory.create(name: 'Hatch médio', daily_rate: '20', 
+                      car_insurance: '2189', third_party_insurance: '1800')
 
     visit root_path
     click_on 'Categorias'
