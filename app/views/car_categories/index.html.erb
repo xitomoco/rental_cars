@@ -1,11 +1,11 @@
-<% if @carcategories[0] == nil %>
+<% if @carcategories.empty? %>
   <h2>Nenhuma categoria cadastrada</h2>
 <% end %>
 
 <%= link_to 'Cadastrar categoria', new_car_category_path %>
 
 <% @carcategories.each do |category| %>
-  <%= category.name %>
+  <%= link_to category.name, car_category_path(category) %>
   <%= category.daily_rate %>
   <%= category.car_insurance %>
   <%= category.third_party_insurance %>

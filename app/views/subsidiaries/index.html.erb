@@ -1,11 +1,11 @@
-<% if @subsidiaries[0] == nil %>
+<% if @subsidiaries.empty? %>
   <h1>Nenhuma filial cadastrada</h1>
 <% end %>
 
 <%= link_to 'Cadastrar filial', new_subsidiary_path %>
 
-<% @subsidiaries.each do |s| %>
-  <h2><%= link_to s.name, subsidiary_path(s) %></h2>
+<% @subsidiaries.each do |subsidiary| %>
+  <h2><%= link_to subsidiary.name, subsidiary_path(subsidiary) %></h2>
 <% end %>
 
 <%= link_to 'Voltar', root_path %>

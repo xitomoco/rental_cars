@@ -13,7 +13,7 @@ class CarCategoriesController < ApplicationController
     if @carcategory.save
       redirect_to @carcategory
     else
-      flash_spaces
+      @errors = filter_error
       render :new
     end
   end
@@ -28,7 +28,7 @@ class CarCategoriesController < ApplicationController
     params.require(:car_category).permit(:name, :daily_rate, :car_insurance, :third_party_insurance)
   end
 
-  def flash_spaces
-    flash[:spaces] = 'Você deve informar todos os dados da categoria'
+  def filter_error
+    @carcategory.errors.messages.map{|attribure, message| message}.uniq
   end
 end

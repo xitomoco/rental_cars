@@ -1,7 +1,7 @@
-<% flash.each do |type, msg| %>
-  <div>
-    <%= msg %>
-  </div>
+<% if @errors.present? %>
+  <% @errors.each do |error| %>
+    <p><%= error[0] %></p>
+  <% end %>
 <% end %>
 
 <%= form_for @carcategory do |f| %>

@@ -17,7 +17,7 @@ class SubsidiariesController < ApplicationController
     if @subsidiary.save
       redirect_to @subsidiary
     else
-      flash_spaces
+      @errors = filter_error
       render :new
     end
   end
@@ -31,7 +31,7 @@ class SubsidiariesController < ApplicationController
     if @subsidiary.update(params_subsidiary)
       redirect_to @subsidiary
     else
-      flash_spaces
+      @errors = filter_error
       render :edit
     end
   end
@@ -42,7 +42,7 @@ class SubsidiariesController < ApplicationController
     params.require(:subsidiary).permit(:name, :cnpj, :address)
   end
 
-  def flash_spaces
-    flash[:spaces] = 'Você deve informar todos os dados da filial'
+  def filter_error
+    @subsidiary.errors.messages.map{|attribure, message| message}.uniq
   end
 end

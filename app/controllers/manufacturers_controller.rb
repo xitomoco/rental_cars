@@ -17,6 +17,7 @@ class ManufacturersController < ApplicationController
     if @manufacturer.save
       redirect_to @manufacturer
     else
+      @errors = filter_error
       render 'new'
     end
   end
@@ -25,5 +26,9 @@ class ManufacturersController < ApplicationController
 
   def params_manufacturer
     params.require(:manufacturer).permit(:name)
-  end 
+  end
+
+  def filter_error
+    @manufacturer.errors.messages.map{|attribure, message| message}.uniq
+  end
 end

@@ -17,7 +17,7 @@ class CustomersController < ApplicationController
     if @customer.save
       redirect_to @customer
     else
-      flash_spaces
+      @errors = filter_error
       render 'new'
     end
   end
@@ -28,7 +28,7 @@ class CustomersController < ApplicationController
     params.require(:customer).permit(:name, :cpf, :email)
   end
 
-  def flash_spaces
-    flash[:spaces] = 'Você deve informar todos os dados do cliente'
+  def filter_error
+    @customer.errors.messages.map{|attribure, message| message}.uniq
   end
 end

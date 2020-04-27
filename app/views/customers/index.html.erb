@@ -1,6 +1,11 @@
-<% @customers.each do |customer| %>
-	<h2><%= customer.name %></h2>
+<% if @customers.empty? %>
+  <h1>Nenhum cliente cadastrado</h1>
 <% end %>
 
 <%= link_to 'Cadastrar cliente', new_customer_path %>
+
+<% @customers.each do |customer| %>
+	<h2><%= link_to customer.name, custumer_path(customer) %></h2>
+<% end %>
+
 <%= link_to 'Voltar', root_path %>

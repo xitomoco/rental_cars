@@ -5,6 +5,7 @@ feature 'User register customer' do
     visit root_path
     click_on 'Clientes'
 
+    expect(page).to have_content('Nenhum cliente cadastrado')
     expect(page).to have_link('Cadastrar cliente', href: new_customer_path)
   end
 
