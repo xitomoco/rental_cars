@@ -8,14 +8,10 @@
 
 <% @carcategories.each do |category| %>
   <div>
-  <h1>Categoria <%= category.name %></h1>
+  <h1><%= link_to "Categoria #{category.name}", category %></h1>
     <dl>
       <dt>Diaria</dt>
-      <dd><%= number_to_currency(category.daily_rate, delimiter: ',') %></dd>
-      <dt>Seguro do carro</dt>
-      <dd><%= number_to_currency(category.car_insurance, delimiter: ',') %></dd>
-      <dt>Seguro de terceiros</dt>
-      <dd><%= number_to_currency(category.third_party_insurance, delimiter: ',') %></dd>
+      <dd><%= number_to_currency(category.daily_rate) %></dd>
     </dl>
   </div>
 <% end %>

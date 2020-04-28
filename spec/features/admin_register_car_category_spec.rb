@@ -20,9 +20,9 @@ feature 'Admin register car category' do
     click_on 'Enviar'
 
     expect(page).to have_content('Nome da categoria')
-    expect(page).to have_content('99.9')
-    expect(page).to have_content('99.9')
-    expect(page).to have_content('99.9')
+    expect(page).to have_content('99,9')
+    expect(page).to have_content('99,9')
+    expect(page).to have_content('99,9')
   end
 
   scenario 'and check all create fields are fill' do

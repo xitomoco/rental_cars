@@ -1,8 +1,13 @@
-<li>
-  <h1><%= @carcategory.name %></h1>
-  <p><%= @carcategory.daily_rate %></p>
-  <p><%= @carcategory.car_insurance %></p>
-  <p><%= @carcategory.third_party_insurance %></p>
-</li>
+<div>
+  <h1><%= "Categoria #{@carcategory.name}" %></h1>
+  <dl>
+    <dt>Diaria</dt>
+    <dd><%= number_to_currency(@carcategory.daily_rate) %></dd>
+    <dt>Seguro do carro</dt>
+    <dd><%= number_to_currency(@carcategory.car_insurance) %></dd>
+    <dt>Seguro de terceiros</dt>
+    <dd><%= number_to_currency(@carcategory.third_party_insurance) %></dd>
+  </dl>
+</div>
 
 <%= link_to 'Voltar', car_categories_path %>
