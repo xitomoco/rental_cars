@@ -5,7 +5,7 @@ class ManufacturersController < ApplicationController
   end
 
   def show
-    @manufacturer = Manufacturer.find(params[:id])
+    set_manufacturer
   end
 
   def new
@@ -23,11 +23,11 @@ class ManufacturersController < ApplicationController
   end
 
   def edit
-    @manufacturer = Manufacturer.find(params[:id])
+    set_manufacturer
   end
   
   def update
-    @manufacturer = Manufacturer.find(params[:id])
+    set_manufacturer
     if @manufacturer.update(params_manufacturer)
       redirect_to @manufacturer
     else
@@ -35,7 +35,17 @@ class ManufacturersController < ApplicationController
       render 'edit'
     end
   end
-  
+
+  def destroy
+    set_manufacturer
+    if @manufacturer.destroy
+      flash[:notice] = 'Fabricante deletado com sucesso'
+      redirect_to manufacturers_path
+    else
+      flash[:error] = 'Algo deu errado ao deletar'
+      redirect_to manufacturers_path
+    end
+  end
 
   private
 
@@ -45,5 +55,9 @@ class ManufacturersController < ApplicationController
 
   def filter_error
     @manufacturer.errors.messages.map{|attribure, message| message}.uniq
+  end
+
+  def set_manufacturer
+    @manufacturer = Manufacturer.find(params[:id])
   end
 end
