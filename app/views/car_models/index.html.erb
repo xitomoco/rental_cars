@@ -1,0 +1,29 @@
+<h1>Modelos de carros</h1>
+
+<div>
+  <% if @car_models.empty? %>
+    <h2>Não a modelos de carros</h2>
+  <% end %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fabricante</th>
+      <th>Modelo</th>
+      <th>Ano</th>
+      <th>Detalhes</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @car_models.each do |model| %>
+      <tr id="car-model-<%= model.id %>">
+        <td><%= model.manufacturer.name %></td>
+        <th><%= model.name %></th>
+        <th><%= model.year %></th>
+        <th><%= link_to 'Ver detalhes', model %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
