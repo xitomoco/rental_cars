@@ -1,5 +1,7 @@
-<div>
-  <h1><%= "Categoria #{@carcategory.name}" %></h1>
+<section>
+  <header>
+    <h1>Categoria <%= @carcategory.name %></h1>
+  </header>
   <dl>
     <dt>Diaria</dt>
     <dd><%= number_to_currency(@carcategory.daily_rate) %></dd>
@@ -8,6 +10,13 @@
     <dt>Seguro de terceiros</dt>
     <dd><%= number_to_currency(@carcategory.third_party_insurance) %></dd>
   </dl>
-</div>
+
+  <h3>Modelos de carro</h3>
+  <% @carcategory.car_models.each do |car_model| %>
+    <li>
+      <%= link_to car_model.name, car_model %>
+    </li>
+  <% end %>
+</section>
 
 <%= link_to 'Voltar', car_categories_path %>
