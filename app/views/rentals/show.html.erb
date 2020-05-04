@@ -1,0 +1,12 @@
+<h1>Detalhe da locação</h1>
+
+<dl>
+  <dd>Data de início: </dd>
+  <dt><%= l @rental.start_date %></dt>
+  <dd>Data de término: </dd>
+  <dt><%= l @rental.end_date %></dt>
+  <dd>Cliente: </dd>
+  <dt><%= @rental.customer.name %></dt>
+  <dd>Categoria: </dd>
+  <dt><%= @rental.car_category.name %></dt>
+</dl>
