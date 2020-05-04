@@ -30,8 +30,6 @@ feature 'Admin view categories' do
     click_on 'Categorias de carros'
     click_on 'Categoria Hatch médio'
 
-    save_page
-
     expect(page).to have_content('Categoria Hatch médio')
     expect(page).to have_content('Diaria R$ 20,00')
     expect(page).to have_content('Seguro do carro R$ 2,189,00')

@@ -2,19 +2,19 @@ require 'rails_helper'
 
 feature 'Admin view subsidiaries' do
   scenario 'successfully' do
-    Subsidiary.create(name: 'Nome da filial', cnpj: 'CNPJ da filial', 
+    Subsidiary.create(name: 'Nome da filial', cnpj: '99.757.632/8324-85', 
                       address: 'Endereço da filial')
 
     visit root_path
     click_on 'Filiais'
 
     expect(page).to have_content('Nome da filial')
-    expect(page).not_to have_content('CNPJ da filial')
+    expect(page).not_to have_content('99.757.632/8324-85')
     expect(page).not_to have_content('Endereço da filial')
   end
 
   scenario 'and view datails' do
-    Subsidiary.create(name: 'Nome da filial', cnpj: 'CNPJ da filial', 
+    Subsidiary.create(name: 'Nome da filial', cnpj: '99.757.632/8324-85', 
                       address: 'Endereço da filial')
 
     visit root_path
@@ -22,7 +22,7 @@ feature 'Admin view subsidiaries' do
     click_on 'Nome da filial'
 
     expect(page).to have_content('Nome da filial')
-    expect(page).to have_content('CNPJ da filial')
+    expect(page).to have_content('99.757.632/8324-85')
     expect(page).to have_content('Endereço da filial')
     expect(page).not_to have_content('Nenhuma filial cadastrada')
   end
@@ -42,7 +42,7 @@ feature 'Admin view subsidiaries' do
   end
 
   scenario 'and from show return to index' do
-    Subsidiary.create(name: 'Nome da filial', cnpj: 'CNPJ da filial', 
+    Subsidiary.create(name: 'Nome da filial', cnpj: '99.757.632/8324-85', 
                       address: 'Endereço da filial')
 
     visit root_path

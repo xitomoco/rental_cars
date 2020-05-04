@@ -15,13 +15,13 @@ feature 'User register customer' do
     click_on 'Cadastrar cliente'
 
     fill_in 'Nome', with: 'Nome do cliente'
-    fill_in 'CPF', with: 'CPF do cliente'
-    fill_in 'Email', with: 'Email do cliente'
+    fill_in 'CPF', with: '630.961.353-71'
+    fill_in 'Email', with: 'chmleave@gmail.com'
     click_on 'Enviar'
 
     expect(page).to have_content('Nome do cliente')
-    expect(page).to have_content('CPF do cliente')
-    expect(page).to have_content('Email do cliente')
+    expect(page).to have_content('630.961.353-71')
+    expect(page).to have_content('chmleave@gmail.com')
   end
 
   scenario 'and check return link' do

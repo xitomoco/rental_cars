@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'cpf_cnpj'
 
 feature 'Admin register subsidiary' do
   scenario 'from index page' do
@@ -14,12 +15,12 @@ feature 'Admin register subsidiary' do
     click_on 'Cadastrar filial'
 
     fill_in 'Nome', with: 'Nome da filial'
-    fill_in 'CNPJ', with: 'CNPJ da filial'
+    fill_in 'CNPJ', with: '07.069.345/0862-74'
     fill_in 'Endereço', with: 'Endereço da filial'
     click_on 'Enviar'
 
     expect(page).to have_content('Nome da filial')
-    expect(page).to have_content('CNPJ da filial')
+    expect(page).to have_content('07.069.345/0862-74')
     expect(page).to have_content('Endereço da filial')
   end
 
@@ -45,7 +46,7 @@ feature 'Admin register subsidiary' do
   end
 
   scenario 'from show page' do
-    Subsidiary.create(name: 'Nome da filial 1', cnpj: 'CNPJ da filial 1', 
+    Subsidiary.create!(name: 'Nome da filial 1', cnpj: '07.069.345/0862-74', 
                       address: 'Endereço da filial 1')
 
     visit root_path
@@ -56,7 +57,7 @@ feature 'Admin register subsidiary' do
   end
 
   scenario 'and update subsidiary' do
-    Subsidiary.create(name: 'Nome da filial 1', cnpj: 'CNPJ da filial 1', 
+    Subsidiary.create!(name: 'Nome da filial 1', cnpj: '07.069.345/0862-74', 
                       address: 'Endereço da filial 1')
 
     visit root_path
@@ -65,17 +66,17 @@ feature 'Admin register subsidiary' do
     click_on 'Editar'
 
     fill_in 'Nome', with: 'Nome da filial 2'
-    fill_in 'CNPJ', with: 'CNPJ da filial 2'
+    fill_in 'CNPJ', with: '40.702.532/0822-21'
     fill_in 'Endereço', with: 'Endereço da filial 2'
     click_on 'Enviar'
 
     expect(page).to have_content('Nome da filial 2')
-    expect(page).to have_content('CNPJ da filial 2')
+    expect(page).to have_content('40.702.532/0822-21')
     expect(page).to have_content('Endereço da filial 2')
   end
 
   scenario 'and check all update fields are fill' do
-    Subsidiary.create(name: 'Nome da filial 1', cnpj: 'CNPJ da filial 1', 
+    Subsidiary.create(name: 'Nome da filial 1', cnpj: '07.069.345/0862-74', 
                       address: 'Endereço da filial 1')
 
     visit root_path
@@ -92,7 +93,7 @@ feature 'Admin register subsidiary' do
   end
 
   scenario 'and check return link in page_edit' do
-    Subsidiary.create(name: 'Nome da filial 1', cnpj: 'CNPJ da filial 1', 
+    Subsidiary.create(name: 'Nome da filial 1', cnpj: '07.069.345/0862-74', 
                       address: 'Endereço da filial 1')
 
     visit root_path
