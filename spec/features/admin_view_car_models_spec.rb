@@ -7,8 +7,8 @@ feature 'Admin view car models' do
     hatch = CarCategory.create(name: 'Hatch médio', daily_rate: '20', car_insurance: '2189', 
                               third_party_insurance: '1800')
 
-    CarModel.create!(name: 'Uno', year: 2020, manufacturer: fiat, car_category: hatch)
-    CarModel.create!(name: 'Ka', year: 2021, manufacturer: ford, car_category: hatch)
+    CarModel.create!(name: 'Uno', year: 2020, motorization: '1.0', fuel_type: 'Flex', manufacturer: fiat, car_category: hatch)
+    CarModel.create!(name: 'Ka', year: 2021, motorization: '1.0', fuel_type: 'Flex', manufacturer: ford, car_category: hatch)
 
     visit root_path
     click_on 'Modelos de carros'
@@ -58,7 +58,7 @@ feature 'Admin view car models' do
 
     uno = CarModel.create!(name: 'Uno', year: 2020, manufacturer: fiat, motorization: '1.0', 
                           fuel_type: 'Flex', car_category: hatch)
-    CarModel.create!(name: 'Ka', year: 2021, manufacturer: ford, car_category: hatch)
+    CarModel.create!(name: 'Ka', year: 2021, motorization: '1.0', fuel_type: 'Flex', manufacturer: ford, car_category: hatch)
 
     visit root_path
     click_on 'Modelos de carros'

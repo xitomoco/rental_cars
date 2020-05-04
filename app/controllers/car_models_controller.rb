@@ -19,7 +19,8 @@ class CarModelsController < ApplicationController
     if @car_model.save
       redirect_to @car_model
     else
-      filter_error
+      @manufacturers = Manufacturer.all
+      @car_categories = CarCategory.all
       render 'new'
     end
   end
@@ -33,9 +34,5 @@ class CarModelsController < ApplicationController
 
   def set_car_models
     @car_model = CarModel.find(params[:id])
-  end
-
-  def filter_error
-    @car_model.errors.messages.map{|attribure, message| message}.uniq
   end
 end

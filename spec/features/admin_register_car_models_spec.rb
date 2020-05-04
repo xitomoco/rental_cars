@@ -22,5 +22,18 @@ feature'Admin register car models' do
     expect(page).to have_content('Detalhe do modelo Ka')
     expect(page).to have_content('Fabricantes: Ford')
     expect(page).to have_content('Categoria: Hatch')
+    expect(current_path).to eq(car_model_path(CarModel.last))
+  end
+
+  scenario 'and fill in all fields' do
+    visit new_car_model_path
+    click_on 'Enviar'
+
+    expect(page).to have_content('Nome não pode ficar em branco')
+    expect(page).to have_content('Ano não pode ficar em branco')
+    expect(page).to have_content('Motor não pode ficar em branco')
+    expect(page).to have_content('Combustivel não pode ficar em branco')
+    expect(page).to have_content('Fabricante é obrigatório(a)')
+    expect(page).to have_content('Categoria é obrigatório(a)')
   end
 end
