@@ -56,8 +56,6 @@ feature 'Admin view categories' do
     click_on 'Categorias de carros'
     click_on 'Categoria Hatch médio'
 
-    save_page
-
     expect(page).to have_link('Uno', href: car_model_path(car_model_uno))
     expect(page).to have_link('Mobi', href: car_model_path(car_model_mobi))
     expect(page).not_to have_link('Argo')

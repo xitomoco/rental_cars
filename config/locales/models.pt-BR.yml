@@ -3,6 +3,7 @@ pt-BR:
   activerecord:
     models:
       car_model: Modelo de Carro
+      rental: Locação
     attributes:
       car_model:
         name: Nome
@@ -13,3 +14,8 @@ pt-BR:
         manufacturer_id: Fabricante
         car_category: Categoria
         car_category_id: Categoria
+      rental:
+        start_date: Data de início
+        end_date: Data de término
+        customer: Cliente
+        car_category: Categoria

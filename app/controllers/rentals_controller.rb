@@ -20,7 +20,7 @@ class RentalsController < ApplicationController
       redirect_to @rental
     else
       @customers = Customer.all
-      @car_categories = CarCategories.all
+      @car_categories = CarCategory.all
       render 'new'
     end
   end
