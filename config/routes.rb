@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'home#index'
   resources :manufacturers
   resources :subsidiaries, only: [:index, :show, :new, :create, :edit, :update]
