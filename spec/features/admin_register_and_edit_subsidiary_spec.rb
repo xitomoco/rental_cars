@@ -3,6 +3,9 @@ require 'cpf_cnpj'
 
 feature 'Admin register subsidiary' do
   scenario 'from index page' do
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Filiais'
 
@@ -10,6 +13,9 @@ feature 'Admin register subsidiary' do
   end
 
   scenario 'successfuly' do
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Filiais'
     click_on 'Cadastrar filial'
@@ -25,6 +31,9 @@ feature 'Admin register subsidiary' do
   end
 
   scenario 'and check all create fields are fill' do
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Filiais'
     click_on 'Cadastrar filial'
@@ -38,6 +47,9 @@ feature 'Admin register subsidiary' do
   end
 
   scenario 'and check return link in page_new' do
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Filiais'
     click_on 'Cadastrar filial'
@@ -48,6 +60,8 @@ feature 'Admin register subsidiary' do
   scenario 'from show page' do
     Subsidiary.create!(name: 'Nome da filial 1', cnpj: '07.069.345/0862-74', 
                       address: 'Endereço da filial 1')
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
 
     visit root_path
     click_on 'Filiais'
@@ -59,6 +73,8 @@ feature 'Admin register subsidiary' do
   scenario 'and update subsidiary' do
     Subsidiary.create!(name: 'Nome da filial 1', cnpj: '07.069.345/0862-74', 
                       address: 'Endereço da filial 1')
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
 
     visit root_path
     click_on 'Filiais'
@@ -78,6 +94,8 @@ feature 'Admin register subsidiary' do
   scenario 'and check all update fields are fill' do
     Subsidiary.create(name: 'Nome da filial 1', cnpj: '07.069.345/0862-74', 
                       address: 'Endereço da filial 1')
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
 
     visit root_path
     click_on 'Filiais'
@@ -95,6 +113,8 @@ feature 'Admin register subsidiary' do
   scenario 'and check return link in page_edit' do
     Subsidiary.create(name: 'Nome da filial 1', cnpj: '07.069.345/0862-74', 
                       address: 'Endereço da filial 1')
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
 
     visit root_path
     click_on 'Filiais'

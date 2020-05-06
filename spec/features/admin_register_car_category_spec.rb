@@ -2,6 +2,9 @@ require 'rails_helper'
 
 feature 'Admin register car category' do
   scenario 'from index page' do
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Categorias'
 
@@ -9,6 +12,9 @@ feature 'Admin register car category' do
   end
 
   scenario 'successfuly' do
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Categorias'
     click_on 'Cadastrar categoria'
@@ -26,6 +32,9 @@ feature 'Admin register car category' do
   end
 
   scenario 'and check all create fields are fill' do
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Categorias'
     click_on 'Cadastrar categoria'
@@ -40,6 +49,9 @@ feature 'Admin register car category' do
   end
 
   scenario 'and check return link in page_new' do
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
+    
     visit root_path
     click_on 'Categorias'
     click_on 'Cadastrar categoria'

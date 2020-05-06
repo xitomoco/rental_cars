@@ -2,6 +2,9 @@ require 'rails_helper'
 
 feature 'User register customer' do
   scenario 'from index page' do
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Clientes'
 
@@ -10,6 +13,9 @@ feature 'User register customer' do
   end
 
   scenario 'successfuly' do
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Clientes'
     click_on 'Cadastrar cliente'
@@ -25,6 +31,9 @@ feature 'User register customer' do
   end
 
   scenario 'and check return link' do
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
+
     visit root_path
     click_on 'Clientes'
     click_on 'Cadastrar cliente'
@@ -32,7 +41,10 @@ feature 'User register customer' do
     expect(page).to have_link('Voltar', href: customers_path)
   end
 
-  scenario 'and check all fields are fill' do 
+  scenario 'and check all fields are fill' do
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
+    
     visit root_path
     click_on 'Clientes'
     click_on 'Cadastrar cliente'

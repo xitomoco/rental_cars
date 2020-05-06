@@ -6,6 +6,8 @@ feature'Admin register car models' do
     manufactuer = Manufacturer.create!(name: 'Ford')
     car_category = CarCategory.create!(name: 'Hatch médio', daily_rate: '20', car_insurance: '2189', 
                                        third_party_insurance: '1800')
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
 
     visit root_path
     click_on 'Modelos de carros'
@@ -26,6 +28,9 @@ feature'Admin register car models' do
   end
 
   scenario 'and fill in all fields' do
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
+    
     visit new_car_model_path
     click_on 'Enviar'
 
