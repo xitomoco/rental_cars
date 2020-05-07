@@ -1,4 +1,5 @@
 class RentalsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :new, :create]
 
   def index
     @rentals = Rental.all
@@ -24,7 +25,21 @@ class RentalsController < ApplicationController
       render 'new'
     end
   end
-  
+
+  def search
+    @q = params[:q]
+    @rentals = Rental.all
+    @rental = Rental.find_by(code: @q.upcase)
+    if @q.blank?
+      flash.now[:alert] = 'Busca não pode ficar em branco'
+      render 'index'
+    elsif @rental.blank?
+      flash.now[:alert] = "Nenhum código foi em contrado para: #{@q}"
+      render 'index'
+    else
+      render 'show'
+    end
+  end
   
   private
 

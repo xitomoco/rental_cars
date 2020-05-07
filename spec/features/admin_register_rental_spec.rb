@@ -7,8 +7,8 @@ feature 'Admin register rental' do
     car_category = CarCategory.create(name: 'Hatch médio', daily_rate: '20', car_insurance: '2189', 
                                       third_party_insurance: '1800')
     user = User.create!(email: 'teste@teste.com', password: '123456789')
-  
     login_as user, scope: :user
+
     visit root_path
     click_on 'Locações'
     click_on 'Cadastrar locação'
@@ -26,8 +26,10 @@ feature 'Admin register rental' do
   end
 
   scenario 'and must fill in all fields' do
-    visit new_rental_path
+    user = User.create!(email: 'teste@teste.com', password: '123456789')
+    login_as user, scope: :user
 
+    visit new_rental_path
     click_on 'Enviar'
 
     expect(page).to have_content('Data de início não pode ficar em branco')

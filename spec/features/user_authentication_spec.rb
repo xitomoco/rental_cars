@@ -68,8 +68,6 @@ feature 'User authentication' do
         click_on 'Cadastrar-me'
       end
 
-      save_page
-
       expect(page).to have_content('Login efetuado com sucesso.')
       expect(page).to have_link('Sair')
       expect(page).not_to have_link('Entrar')

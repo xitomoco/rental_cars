@@ -2,6 +2,12 @@
 
 <%= link_to 'Cadastrar locação', new_rental_path %>
 
+<%= form_with(url: search_rentals_path, method: "get") do |f| %>
+  <%= f.label :q, 'Código' %>
+  <%= f.text_field :q %>
+  <%= f.submit 'Buscar' %>
+<% end %>
+
 <table>
   <thead>
     <tr>
