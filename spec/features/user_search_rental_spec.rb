@@ -53,8 +53,6 @@ feature 'User search rental' do
     fill_in 'Código', with: 'LK5DF'
     click_on 'Buscar'
 
-    save_page
-
     expect(page).to have_content("Nenhum código foi em contrado para: LK5DF")
   end
 end

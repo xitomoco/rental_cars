@@ -2,10 +2,16 @@
   <h1>Nenhum cliente cadastrado</h1>
 <% end %>
 
+<%= form_with(url: search_rentals_path, method: 'get') do |f| %>
+  <%= f.label(:q, 'Busca') %>
+  <%= f.text_field(:q) %>
+  <%= f.submit "Buscar" %>
+<% end%>
+
 <%= link_to 'Cadastrar cliente', new_customer_path %>
 
 <% @customers.each do |customer| %>
-	<h2><%= link_to customer.name, custumer_path(customer) %></h2>
+	<h2><%= link_to customer.name, customer_path(customer) %></h2>
 <% end %>
 
 <%= link_to 'Voltar', root_path %>
