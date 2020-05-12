@@ -19,3 +19,6 @@ pt-BR:
         end_date: Data de término
         customer: Cliente
         car_category: Categoria
+      rental/status:
+        scheduled: Agendada
+        ongoing: Em progresso

@@ -21,8 +21,9 @@
     <dt><%= I18n.l Time.now, format: :long %></dt>
     <dd>Placa do carro: </dd>
     <dt><%= @rental.car_rental.car.license_plate %></dt>
-    <dd>Email do usuario: </dd>
+    <dd>Locação iniciada por: </dd>
     <dt><%= @rental.car_rental.user.email %></dt>
-    <h2>Em progresso</h2>
+    <dd>Status: </dd>
+    <dt><%= Rental.human_attribute_name("status.#{@rental.status}") %></dt>
   </dl>
 <% end %>

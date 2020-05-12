@@ -12,6 +12,7 @@ class CarRentalsController < ApplicationController
     @car_rental.user = current_user
     @car_rental.rental = @rental
     @car_rental.save!
+    @rental.ongoing!
 
     redirect_to @rental
   end
