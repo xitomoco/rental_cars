@@ -11,4 +11,18 @@
   <dt><%= @rental.customer.name %></dt>
   <dd>Categoria: </dd>
   <dt><%= @rental.car_category.name %></dt>
+  <%= link_to 'Iniciar', new_rental_car_rental_path(@rental) %>
 </dl>
+
+<% if @rental.car_rental.present? %>
+  <h1>Iniciado</h1>
+  <dl>
+    <dd>Data de inicio: </dd>
+    <dt><%= I18n.l Time.now, format: :long %></dt>
+    <dd>Placa do carro: </dd>
+    <dt><%= @rental.car_rental.car.license_plate %></dt>
+    <dd>Email do usuario: </dd>
+    <dt><%= @rental.car_rental.user.email %></dt>
+    <h2>Em progresso</h2>
+  </dl>
+<% end %>
