@@ -41,9 +41,6 @@ class ManufacturersController < ApplicationController
     if @manufacturer.destroy
       flash[:notice] = 'Fabricante deletado com sucesso'
       redirect_to manufacturers_path
-    else
-      flash[:error] = 'Algo deu errado ao deletar'
-      redirect_to manufacturers_path
     end
   end
 
