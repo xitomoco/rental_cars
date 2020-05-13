@@ -3,7 +3,9 @@ pt-BR:
   activerecord:
     models:
       car_model: Modelo de Carro
-      rental: Locação
+      rental:
+        one: Locação
+        other: Locações
     attributes:
       car_model:
         name: Nome
